@@ -276,8 +276,6 @@ button:disabled {
   }
 
   .carousel {
-    position: relative;
-    top: -43.25px;
     padding: 0;
   }
 
