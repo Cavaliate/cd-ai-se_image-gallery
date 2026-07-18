@@ -1,9 +1,17 @@
 import { images } from "./images.js";
 import { renderCarouselView } from "./carousel.js";
+import { generateModal } from "./modal.js";
 
 const homeSection = document.querySelector("#home");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
+
+const openModal = generateModal({
+  modalEl: document.querySelector("#confirmation-modal"),
+  cancelBtnEl: document.querySelector(".modal__btn_type_cancel"),
+  confirmBtnEl: document.querySelector(".modal__btn_type_confirm"),
+  visibleClass: "modal_visible",
+});
 
 function renderHomeView() {
   homeSection.style.display = "block";
@@ -28,7 +36,7 @@ function renderHomeView() {
 
     const deleteBtn = cloneEl.querySelector(".gallery__btn_type_delete");
     deleteBtn.addEventListener("click", () => {
-      cloneEl.remove();
+      openModal(() => cloneEl.remove());
     });
 
     return cloneEl;
